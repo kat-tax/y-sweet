@@ -207,6 +207,12 @@ async fn main() -> Result<()> {
                 None
             };
 
+            let url_prefix = url_prefix.clone().or_else(|| {
+                env::var("RAILWAY_PUBLIC_DOMAIN").ok().and_then(|domain| {
+                    Url::parse(&format!("https://{}", domain)).ok()
+                })
+            });
+
             if !prod {
                 print_server_url(auth.as_ref(), url_prefix.as_ref(), addr);
             }
