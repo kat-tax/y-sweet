@@ -1,0 +1,13 @@
+examples/
+node_modules/
+.git/
+docs/
+.cursor/
+package-lock.json
+package.json
+js-pkg/
+python/
+releaser/
+tests/
+local-first-landscape/
+deploy/

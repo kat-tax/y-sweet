@@ -344,6 +344,7 @@ impl Server {
 
     pub fn routes(self: &Arc<Self>) -> Router {
         Router::new()
+            .route("/health", get(ready))
             .route("/ready", get(ready))
             .route("/check_store", post(check_store))
             .route("/check_store", get(check_store_deprecated))
@@ -363,6 +364,7 @@ impl Server {
 
     pub fn single_doc_routes(self: &Arc<Self>) -> Router {
         Router::new()
+            .route("/health", get(ready))
             .route("/ws/:doc_id", get(handle_socket_upgrade_single))
             .route("/as-update", get(get_doc_as_update_single))
             .route("/update", post(update_doc_single))
